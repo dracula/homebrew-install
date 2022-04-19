@@ -1,6 +1,6 @@
 cask "dracula-gitkraken" do
-  version "0.2.0"
-  sha256 "fdc3a3dce961924eab14250e8d5ce9255a3d0064c846ee0dd92ccb5ff01690f0"
+  version "0.3.0"
+  sha256 "f73bfdae18f619776931c5fa5f9937ed67bb4f726be70dea8b6a117282254baa"
 
   tokens = token.split "-"
   repo = File.join "github.com", tokens
