@@ -9,3 +9,5 @@ jobs:
       uses: danielbayley/homebrew-pipeline@main
       env:
         ACTIONS_STEP_DEBUG: ${{secrets.ACTIONS_STEP_DEBUG}}
+      with:
+        skip-install: dracula-ableton-live
