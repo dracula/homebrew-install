@@ -19,6 +19,10 @@ tap "dracula/install"
 cask "dracula-foo"
 ```
 
+## Contributing
+
+`git config core.hooksPath .github/hooks`
+
 ## `dracula-yaml-json` command
 
 This tap comes with a simple [external command](https://docs.brew.sh/External-Commands) to convert source
