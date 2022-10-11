@@ -10,4 +10,8 @@ jobs:
       env:
         ACTIONS_STEP_DEBUG: ${{secrets.ACTIONS_STEP_DEBUG}}
       with:
-        skip-install: dracula-ableton-live,dracula-colorslurp,dracula-drafts
+        skip-install: >-
+          dracula-ableton-live,
+          dracula-colorslurp,
+          dracula-drafts,
+          dracula-snippetslab
