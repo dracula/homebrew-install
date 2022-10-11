@@ -36,13 +36,15 @@ module Homebrew
   end
 
   def dracula_yaml_json
+    stdin = $stdin.ready? if ENV["GITHUB_ACTIONS"].blank?
+
     args = dracula_yaml_json_args.parse
     args.named.map!(&:to_p).filter!(&:file?)
     args.named.unshift $include.to_p.basename
 
     base = curl_output "https://raw.githubusercontent.com/#{$repo}/#{$include}"
 
-    args.named.push $stdin unless $stdin.tty?
+    args.named.push $stdin if stdin
     base.stdout << args.named.map(&:read).join if args.named.first.file?
 
     theme = YAML.safe_load(base.stdout, aliases: true).with_indifferent_access
@@ -64,7 +66,7 @@ module Homebrew
     end if indent.present?
 
     json ||= JSON.pretty_generate theme, indent: indent
-    return puts json unless $stdin.tty?
+    return puts json if stdin
 
     name = theme.fetch :name, args.named.first.basename(".*").to_s.titlecase
     gitignore = Pathname  ".gitignore"
