@@ -21,7 +21,7 @@ cask "dracula-foo"
 
 ## Contributing
 
-`git config core.hooksPath .github/hooks`
+`git config core.hooksPath .github/hooks` and follow the contribution [guide](https://docs.brew.sh/Adding-Software-to-Homebrew#writing-the-cask), or copy and adapt an [existing](./Casks) _[Cask](https://docs.brew.sh/Cask-Cookbook)_.
 
 ## `dracula-yaml-json` command
 
