@@ -1,8 +1,5 @@
 inherit_from: /usr/local/Homebrew/Library/.rubocop.yml
 
-Sorbet/FalseSigil:
-  Enabled: false
-
 Style/Documentation:
   Enabled: false
 

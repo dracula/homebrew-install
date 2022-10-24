@@ -1,3 +1,4 @@
+# typed: false
 # frozen_string_literal: true
 
 Homebrew.install_bundler_gems!
