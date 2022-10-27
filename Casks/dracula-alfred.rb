@@ -22,9 +22,9 @@ cask "dracula-alfred" do
   syncfolder = File.expand_path `defaults read #{bundle_id} syncfolder`.chomp
   syncfolder = "#{Dir.home}/Library/Application Support/Alfred" unless $CHILD_STATUS.success?
   themes = "#{syncfolder}/Alfred.alfredpreferences/themes"
+  theme = "#{themes}/theme.homebrew.#{tokens.first}/theme.json"
 
-  artifact "Dracula.alfredappearance",
-           target: "#{themes}/theme.homebrew.#{tokens.first}/theme.json"
+  artifact "Dracula.alfredappearance", target: theme
 
   preflight { system "git pull origin refs/pull/10/head --quiet", chdir: staged_path }
 
