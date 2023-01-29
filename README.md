@@ -8,7 +8,7 @@ Easily install themes from [dracula/homebrew-install](./Casks):
 
 ``` sh
 brew tap dracula/install
-brew install --cask dracula-foo
+brew install --cask dracula-foo #--formula
 ```
 
 Also, if you keep a [_Brewfile_](https://github.com/Homebrew/homebrew-bundle#usage), you can add something like this:
