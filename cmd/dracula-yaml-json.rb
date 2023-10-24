@@ -37,13 +37,14 @@ module Homebrew
   end
 
   def dracula_yaml_json
+    require "yaml"
     stdin = $stdin.ready? if ENV["GITHUB_ACTIONS"].blank?
 
     args = dracula_yaml_json_args.parse
     args.named.map!(&:to_p).filter!(&:file?)
     args.named.unshift $include.to_p.basename
 
-    base = curl_output "https://raw.githubusercontent.com/#{$repo}/#{$include}"
+    base = Utils::Curl.curl_output "https://raw.githubusercontent.com/#{$repo}/#{$include}"
 
     args.named.push $stdin if stdin
     base.stdout << args.named.map(&:read).join if args.named.first.file?
