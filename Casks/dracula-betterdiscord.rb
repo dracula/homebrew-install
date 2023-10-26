@@ -6,7 +6,7 @@ cask "dracula-betterdiscord" do
   tokens = token.split "-"
   repo = "githubusercontent.com/#{tokens.first}/#{app_name}"
   branch = "master"
-  css = "Dracula.theme.css"
+  css = "Dracula_Official.theme.css"
 
   url "https://raw.#{repo}/#{branch}/#{css}", verified: repo
   name "Dracula for #{app_name}"
