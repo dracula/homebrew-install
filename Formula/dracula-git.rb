@@ -1,6 +1,6 @@
 class DraculaGit < Formula
   desc "Dark theme for Git"
-  homepage "https://draculatheme.com/git#readme"
+  homepage "https://draculatheme.com/git"
   ORG = "https://github.com/dracula".freeze
   url "#{ORG}/git/trunk", using: :svn
   version "1.0.0"
