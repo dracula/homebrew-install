@@ -3,7 +3,7 @@ cask "dracula-ableton-live" do
   sha256 :no_check
 
   tokens = token.split "-", 2
-  app_name = tokens.last.titlecase
+  app_name = tokens.last.split("-").map(&:capitalize).join(" ")
 
   repo = File.join "github.com", tokens
   branch = "master"
