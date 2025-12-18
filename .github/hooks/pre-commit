@@ -1,2 +1,3 @@
 #! /bin/zsh --no-rcs
-brew pre-commit
+git diff --staged --name-only --diff-filter ACM |
+grep '\.rb$' | xargs brew style
