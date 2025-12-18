@@ -4,7 +4,7 @@ cask "dracula-terminal" do
 
   tokens = token.split "-"
   repo = "#{File.join "github.com", tokens}-app"
-  branch = "master"
+  branch = "main"
   app_name = tokens.last.capitalize
   theme = token.capitalize.tr "-", "."
 
