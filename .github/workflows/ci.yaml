@@ -1,0 +1,60 @@
+name: CI
+on:
+  push:
+    branches: main
+    paths:
+    - .github/workflows/*.y*ml
+    - '**.rb'
+
+  pull_request:
+    paths:
+    - .github/workflows/*.y*ml
+    - '**.rb'
+
+  schedule:
+  - cron: 0 5 * * *
+
+jobs:
+  CI:
+    runs-on: macos-${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [14, 15, 15-intel, 26]
+  
+    env:
+      HOMEBREW_NO_AUTO_UPDATE: 1
+      HOMEBREW_GITHUB_API_TOKEN: ${{ github.token }}
+      HOMEBREW_DEBUG:   ${{ secrets.ACTIONS_STEP_DEBUG }}
+      HOMEBREW_VERBOSE: ${{ secrets.ACTIONS_STEP_DEBUG }}
+
+    steps:
+    - name: Set up Homebrew
+      id: set-up-homebrew
+      uses: Homebrew/actions/setup-homebrew@e7dd8719facad339784251420c063a2ca4f5bc96
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Cache Homebrew Bundler RubyGems
+      id: cache
+      uses: actions/cache@9255dc7a253b0ccc959486e2bca901246202afeb # v5.0.1
+      with:
+        path: ${{ steps.set-up-homebrew.outputs.gems-path }}
+        key: ${{ matrix.os }}-rubygems-${{ steps.set-up-homebrew.outputs.gems-hash }}
+        restore-keys: ${{ matrix.os }}-rubygems-
+
+    - name: Install Homebrew Bundler RubyGems
+      if: steps.cache.outputs.cache-hit != 'true'
+      run: brew install-bundler-gems
+
+    - name: Pre-cleanup
+      run: brew test-bot --only-cleanup-before
+
+    - name: Local system setup check
+      run: brew test-bot --only-setup
+
+    - name: Lint tap syntax
+      run: brew test-bot --only-tap-syntax
+
+    - name: Formulae only check
+      if: github.event_name == 'pull_request'
+      run: brew test-bot --only-formulae
