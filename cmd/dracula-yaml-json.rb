@@ -12,9 +12,9 @@ CASE = {
 }.freeze
 
 REPO     = "dracula/template"
-branch   = "main"
+COMMIT   = "291aa546dbf6e95ba4eabec737df8d348125c379"
 path     = "sample/Dracula.yml"
-TEMPLATE = (branch.to_p/path).freeze
+TEMPLATE = path.to_p.freeze
 
 module Homebrew
   module Cmd
@@ -24,7 +24,7 @@ module Homebrew
         description <<~EOS
           Simple command to convert source YAML to JSON. Dracula `*COLOR` aliases are available from
           anchors defined in the included `#{TEMPLATE.basename}` spec template:
-            <https://github.com/#{REPO}/blob/#{TEMPLATE}>
+            <https://github.com/#{REPO}/blob/#{COMMIT}/#{TEMPLATE}>
 
           JSON output will be <stdout> given <stdin>, else a file generated in the current directory,
           with name and extension based on the `name:` property, and last line of `.gitignore`.
@@ -58,7 +58,7 @@ module Homebrew
         args.named.map!(&:to_p).filter! &:file?
         args.named.unshift TEMPLATE.basename
 
-        yaml = Utils::Curl.curl_output "https://raw.githubusercontent.com/#{REPO}/refs/heads/#{TEMPLATE}"
+        yaml = Utils::Curl.curl_output "https://raw.githubusercontent.com/#{REPO}/#{COMMIT}/#{TEMPLATE}"
         return puts yaml.stdout if args.yaml?
 
         args.named.push $stdin if stdin
