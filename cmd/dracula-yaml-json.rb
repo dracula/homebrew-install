@@ -68,7 +68,7 @@ module Homebrew
         theme = template.fetch :spec, {}
 
         if block_given?
-          theme = theme.reduce(theme) do |hash, (key, value)|
+          theme = theme.dup.reduce(theme) do |hash, (key, value)|
             yield hash, [key, value]
             next  hash
           end
