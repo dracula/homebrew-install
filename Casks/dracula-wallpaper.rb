@@ -1,3 +1,5 @@
+require_relative "../lib/utils"
+
 cask "dracula-wallpaper" do
   version :latest
   sha256 :no_check
@@ -8,7 +10,7 @@ cask "dracula-wallpaper" do
 
   url "https://#{repo}/archive/#{branch}.zip",
       verified: repo
-  name token.split("-").map(&:capitalize).join " "
+  name token.titlecase
   desc "Wallpapers with the theme and colors of Dracula"
   homepage "https://#{tokens.first}theme.com/#{tokens.last}"
 

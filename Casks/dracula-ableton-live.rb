@@ -1,9 +1,11 @@
+require_relative "../lib/utils"
+
 cask "dracula-ableton-live" do
   version :latest
   sha256 :no_check
 
   tokens = token.split "-", 2
-  app_name = tokens.last.split("-").map(&:capitalize).join(" ")
+  app_name = tokens.last.titlecase
 
   repo = File.join "github.com", tokens
   branch = "master"
