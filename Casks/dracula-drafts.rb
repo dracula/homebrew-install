@@ -9,7 +9,8 @@ cask "dracula-drafts" do
   mas_id = "1435957248"
 
   domain = "directory.get#{tokens.last}.com"
-  url "https://#{domain}/t/#{id}", verified: domain
+  url "https://#{domain}/t/#{id}",
+      verified: domain
   name "Dracula for #{app_name}"
   desc "Dark theme for #{app_name}"
   homepage "https://#{tokens.first}theme.com/#{tokens.last}"

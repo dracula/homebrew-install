@@ -8,7 +8,8 @@ cask "dracula-betterdiscord" do
   branch = "master"
   css = "Dracula_Official.theme.css"
 
-  url "https://raw.#{repo}/#{branch}/#{css}", verified: repo
+  url "https://raw.#{repo}/#{branch}/#{css}",
+      verified: repo
   name "Dracula for #{app_name}"
   desc "Dark theme for #{app_name}"
   homepage "https://#{tokens.first}theme.com/#{tokens.last}"

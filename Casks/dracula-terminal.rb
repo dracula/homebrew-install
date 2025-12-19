@@ -8,15 +8,15 @@ cask "dracula-terminal" do
   app_name = tokens.last.capitalize
   theme = token.capitalize.tr "-", "."
 
-  url "https://#{repo}/archive/#{branch}.zip", verified: repo
+  url "https://#{repo}/archive/#{branch}.zip",
+      verified: repo
   name "Dracula for #{app_name}.app"
   desc "Dark theme for #{app_name}.app"
   homepage "https://#{tokens.first}theme.com/#{tokens.last}"
 
   livecheck do
     url "https://#{repo}/blob/#{branch}/#{theme}"
-    strategy :page_match
-    regex /Dracula Theme v?(\d+(?:\.\d+)+)/
+    regex(/Dracula Theme v?(\d+(?:\.\d+)+)/)
   end
 
   domain = "com.apple.#{app_name}"

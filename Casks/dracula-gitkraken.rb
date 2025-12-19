@@ -6,7 +6,8 @@ cask "dracula-gitkraken" do
   repo = File.join "github.com", tokens
   app_name = "GitKraken"
 
-  url "https://#{repo}/archive/refs/tags/v#{version}.zip", verified: repo
+  url "https://#{repo}/archive/refs/tags/v#{version}.zip",
+      verified: repo
   name "Dracula for #{app_name}"
   desc "Dark theme for #{app_name}"
   homepage "https://#{tokens.first}theme.com/#{tokens.last}"

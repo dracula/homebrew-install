@@ -9,7 +9,8 @@ cask "dracula-colorslurp" do
   app_name = "ColorSlurp"
   mas_id = "1287239339"
 
-  url "https://#{repo}/archive/refs/heads/#{branch}.zip", verified: repo
+  url "https://#{repo}/archive/refs/heads/#{branch}.zip",
+      verified: repo
   name "Dracula for #{app_name}"
   desc "Dark theme for #{app_name}"
   homepage "https://#{tokens.first}theme.com/"

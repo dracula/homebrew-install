@@ -8,7 +8,8 @@ cask "dracula-ableton-live" do
   repo = File.join "github.com", tokens
   branch = "master"
 
-  url "https://#{repo}/archive/#{branch}.zip", verified: repo
+  url "https://#{repo}/archive/#{branch}.zip",
+      verified: repo
   name "Dracula for #{app_name}"
   desc "Dark theme for #{app_name}"
   homepage "https://#{tokens.first}theme.com/#{tokens.last}"

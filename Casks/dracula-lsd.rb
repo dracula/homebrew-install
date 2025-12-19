@@ -7,7 +7,8 @@ cask "dracula-lsd" do
   branch = "main"
   app_name = tokens.last.upcase
 
-  url "https://#{repo}/archive/#{branch}.tar.gz", verified: repo
+  url "https://#{repo}/archive/#{branch}.tar.gz",
+      verified: repo
   name "Dracula for #{app_name}"
   desc "Dark theme for #{app_name}"
   homepage "https://#{tokens.first}theme.com/#{tokens.last}"

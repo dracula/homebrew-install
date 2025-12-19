@@ -1,5 +1,3 @@
-require "active_support/core_ext/string/inflections"
-
 cask "dracula-wallpaper" do
   version :latest
   sha256 :no_check
@@ -8,8 +6,9 @@ cask "dracula-wallpaper" do
   repo = File.join "github.com", tokens
   branch = "master"
 
-  url "https://#{repo}/archive/#{branch}.zip", verified: repo
-  name token.titlecase
+  url "https://#{repo}/archive/#{branch}.zip",
+      verified: repo
+  name token.split("-").map(&:capitalize).join " "
   desc "Wallpapers with the theme and colors of Dracula"
   homepage "https://#{tokens.first}theme.com/#{tokens.last}"
 
