@@ -74,7 +74,7 @@ module Homebrew
           end
         else
           theme.transform_keys! &:to_s
-          theme.delete_if { args.exclude&.include? _1 }
+          theme.delete_if { args.exclude&.include? it }
 
           if args.case.present?
             theme.transform_keys! do |key|
