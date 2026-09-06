@@ -7,7 +7,7 @@ cask "dracula-alfred" do
   app_name = tokens.last.capitalize
 
   url "https://#{repo}",
-      verified: repo, using: :git
+      using: :git
   name "Dracula for #{app_name} #{version.major}"
   desc "Dark theme for #{app_name}"
   homepage "https://#{tokens.first}theme.com/#{tokens.last}"

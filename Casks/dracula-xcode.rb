@@ -10,8 +10,7 @@ cask "dracula-xcode" do
   app_name = tokens.last.capitalize
   mas_id = "497799835"
 
-  url "https://raw.#{repo}/#{branch}/#{theme}",
-      verified: repo
+  url "https://raw.#{repo}/#{branch}/#{theme}"
   name "Dracula for #{app_name}"
   desc "Dark theme for #{app_name}"
   homepage "https://#{tokens.first}theme.com/#{tokens.last}"

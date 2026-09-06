@@ -7,8 +7,7 @@ cask "dracula-steam" do
   branch = "master"
   app_name = tokens.last.capitalize
 
-  url "https://#{repo}/archive/#{branch}.zip",
-      verified: repo
+  url "https://#{repo}/archive/#{branch}.zip"
   name "Dracula for #{app_name}"
   desc "Dark theme for #{app_name}"
   homepage "https://#{tokens.first}theme.com/#{tokens.last}"
