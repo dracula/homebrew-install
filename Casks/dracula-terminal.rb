@@ -23,14 +23,14 @@ cask "dracula-terminal" do
   keypath = "Window Settings.Dracula"
 
   postflight do
-    xml = Plist.parse_xml staged_path/"#{tokens.last}-app-#{branch}/#{theme}"
+    theme_path = staged_path/"#{tokens.last}-app-#{branch}/#{theme}"
 
     command = "defaults write -app #{app_name} '%s Window Settings' Dracula;"
     settings = %w[Default Startup].map { |setting| command % setting }
     system <<~EOS
       if pgrep -qax #{app_name}
       then open -a  #{app_name} #{theme}
-      else plutil -insert '#{keypath}' -xml '#{xml.to_plist false}' #{plist}
+      else plutil -insert '#{keypath}' -xml "$(cat '#{theme_path}')" #{plist}
       fi && #{settings.join}
     EOS
   end
